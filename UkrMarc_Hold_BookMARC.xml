@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORMAT name="UKRMARC" domain="Holdings" version="0.01 30.10.2012">
+
+<about><![CDATA[
+	Формат УКРМАРК для для записів про зберігання покликаний бути варіантом „UNIMARC/Holdings“, 
+	адатованим для потреб бібліотек України.<br />
+	При складанні БД „UKRMARC Holdings“ використані наступні джерела:
+	<ul>
+		<li><a href="http://www.ifla.org/VI/8/projects/UNIMARC-HoldingsFormat.pdf">UNIMARC manual: holdings format / IFLA Working Group on 
+			the UNIMARC Holdings Format. IFLA, 2007</a></li>
+		<li><a href="http://www.ifla.org/VI/8/UNIMARC-Holdings-List-of-Changes-2007.pdf">UNIMARC Holdings: List of Changes (2007)</a></li>
+		<li><a href="http://www.ifla.org/IV/ifla67/papers/007-188e.pdf">UNIMARC Holdings Format: the state-of-the-art / Rosa Galvão</a></li>
+		<li><a href="http://www.bnf.fr/fr/professionnels/f_um/s.format_unimarc_donnees_local.html?first_Art=non">Format des données locales</a></li>
+		<li><a href="http://uk.wikipedia.org/wiki/UNIMARC">UNIMARC (стаття на Вікіпедії)</a></li>
+	</ul>]]>
+</about>
+
+<changelog>
+	<item version="0.01" date="30.10.2012">Початок роботи над БД „UKRMARC Holdings“.</item>
+</changelog>
+
+<FIELD tag="LEADER" name="Record label" mandatory="y" repeatable="n">
+	<ALTERNATIVE language="eng" name="Record label"/>
+	<MANDATORY_TEXT><![CDATA[The record label occurs at the beginning of every record. Обов’язкове]]></MANDATORY_TEXT>
+	<REPEATABLE_TEXT><![CDATA[Не повторюється]]></REPEATABLE_TEXT>
+	<DESCRIPTION><![CDATA[The record label is constructed according to the provisions of ISO 2709]]></DESCRIPTION>
+	<NOTES><![CDATA[<b>Fixed Length Data Elements</b><br />
+		The label as a whole is always 24 characters in length.<br />
+		<table style="font-size:small; color:rgb(0,0,102);">
+			<tr><td>Name of data element</td>		<td>Number of characters</td><td>Character position(s)</td></tr>
+			<tr><td>Record length</td>		<td>5</td>		<td>0-4</td></tr>
+			<tr><td>Record status</td>		<td>1</td>		<td>5</td></tr>
+			<tr><td>Implementation codes</td>		<td>4</td>		<td>6-9</td></tr>
+			<tr><td>Indicator length</td>		<td>1</td>		<td>10</td></tr>
+			<tr><td>Subfield identifier length</td>		<td>1</td>		<td>11</td></tr>
+			<tr><td>Base Address of data</td>		<td>5</td>		<td>12-16</td></tr>
+			<tr><td>Additional record definition</td>		<td>3</td>		<td>17-19</td></tr>
+			<tr><td>Directory map</td>		<td>4</td>		<td>20-23</td></tr>
+		</table>
+		<b>Notes on Field Contents</b><br />
+		<table style="font-size:small; color:rgb(0,0,102);">
+			<tr>		<td>0-4</td>		<td>Record length</td></tr>
+			<tr>		<td></td>		<td>Five decimal digits, right justified, with zero fill where necessary</td></tr>
+			<tr>		<td>5</td>		<td>Record status</td></tr>
+			<tr>		<td colspan="2">A single character denoting the processing status of the record</td>		</tr>
+			<tr>		<td></td>		<td>c = corrected or revised record</td></tr>
+			<tr>		<td></td>		<td>A holdings record to which changes have been made to correct errors, to bring it up to date,
+				or one where fields have been deleted.</td></tr>
+			<tr>		<td></td>		<td>d = deleted record</td></tr>
+			<tr>		<td></td>		<td>A holdings record which is exchanged in order to indicate that a record bearing this control
+				number is no longer valid. The holdings record may contain only the label, directory and <field>001</field>
+				(record control number) field, or it may contain all the fields in the holdings record as issued;
+				in either case GENERAL NOTE 300 field may be used to explain why the record is deleted.</td></tr>
+			<tr>		<td></td>		<td>n = new record</td></tr>
+			<tr>		<td></td>		<td>A new holdings record</td></tr>
+			<tr>		<td>6-9</td>		<td>Implementation codes</td></tr>
+			<tr>		<td>6</td>		<td>Type of record</td></tr>
+			<tr>		<td></td>		<td>One character code that indicates the characteristics of and defines the components of the record.</td></tr>
+			<tr>		<td></td>		<td>a = Single-part</td></tr>
+			<tr>		<td></td>		<td>Item which is complete in a single physical part.</td></tr>
+			<tr>		<td></td>		<td>b = Multipart</td></tr>
+			<tr>		<td></td>		<td>Item which is complete, or intended to be complete in a finite number of separate physical parts.</td></tr>
+			<tr>		<td></td>		<td>c = Serial</td></tr>
+			<tr>		<td></td>		<td>A continuing resource issued in a succession of discrete parts, usually bearing numbering, that
+				has no predetermined conclusion.<br />
+				The following are examples of materials that are coded "s": journals, magazines, electronic
+				journals, continuing directories, annual reports, newspapers, and monographic series.</td></tr>
+			<tr>		<td></td>		<td>d = Integrating resource</td></tr>
+			<tr>		<td></td>		<td>Bibliographic item/resource that is added to or changed by means of updates that do not
+				remain discrete and are integrated into the whole. Integrating resources may be finite or
+				continuing.<br />
+				The following are examples of materials that are coded "d": updating loose-leafs, databases
+				and updating Web sites.</td></tr>
+			<tr>		<td></td>		<td>u = Holdings type unknown</td></tr>
+			<tr>		<td>7</td>		<td>Type of unit designator</td></tr>
+			<tr>		<td></td>		<td>One character code that specifies the component of the item to which the following general
+				holdings information and/or the extent of holdings pertain.</td></tr>
+			<tr>		<td></td>		<td># = Information not available</td></tr>
+			<tr>		<td></td>		<td>a = Basic bibliographic unit</td></tr>
+			<tr>		<td></td>		<td>b = Secondary bibliographic unit : supplementary materials</td></tr>
+			<tr>		<td></td>		<td>c = Secondary bibliographic unit : indexes</td></tr>
+			<tr>		<td></td>		<td>x = Not applicable</td></tr>
+			<tr>		<td>8</td>		<td>Type of copy statement</td></tr>
+			<tr>		<td></td>		<td>a = copy-specific statement</td></tr>
+			<tr>		<td></td>		<td>Holdings statement for a single copy in a collection</td></tr>
+			<tr>		<td></td>		<td>b = Composite statement about multiple copies at a single location/sublocation</td></tr>
+			<tr>		<td></td>		<td>Holdings statement about two or more copies held at a single location or sublocation</td></tr>
+			<tr>		<td></td>		<td>c = Composite statement about copies at two or more sublocations</td></tr>
+			<tr>		<td></td>		<td>Holdings statement about copies at two or more sublocations consolidated into a single statement</td></tr>
+			<tr>		<td>9</td>		<td>Undefined</td></tr>
+			<tr>		<td>10</td>		<td>Indicator length</td></tr>
+			<tr>		<td></td>		<td>One decimal digit. For the UNIMARC holdings format the value is 2</td></tr>
+			<tr>		<td>11</td>		<td>Subfield identifier length</td></tr>
+			<tr>		<td></td>		<td>One decimal digit. For the UNIMARC holdings format the value is 2</td></tr>
+			<tr>		<td>12-16</td>		<td>Base address of data</td></tr>
+			<tr>		<td></td>		<td>Five numeric digits, right justified with leading zeros, indicating the starting character position of
+				the first data field relative to the beginning of the record.</td></tr>
+			<tr>		<td>17-19</td>		<td>Additional record definition</td></tr>
+			<tr>		<td>17</td>		<td>Encoding level</td></tr>
+			<tr>		<td></td>		<td>A one character code that indicates the level of specificity of the holdings statement. Codes 1, 2
+				and 3 reflect the requirements of Levels 1, 2 and 3 of Holdings Statements – Summary Level
+				(ISO 10324). A single part item holdings statement is recorded at level 1. A multipart or serial
+				item holdings statement may be recorded at any level.</td></tr>
+			<tr>		<td></td>		<td>1 = Level 1</td></tr>
+			<tr>		<td></td>		<td>Identifies the item and the holding institution. This level is sufficient for single -part items,
+				but gives no indication of extent of holdings for multipart items or serial items.</td></tr>
+			<tr>		<td></td>		<td>2 = Level 2</td></tr>
+			<tr>		<td></td>		<td>Adds to level 1 general guidance as to the extent of an institution’s holdings.</td></tr>
+			<tr>		<td></td>		<td>3 = Level 3</td></tr>
+			<tr>		<td></td>		<td>Includes a statement of summary extent of holdings.</td></tr>
+			<tr>		<td></td>		<td>m = Mixed level</td></tr>
+			<tr>		<td></td>		<td>Indicates that the level of holdings statement is mixed, for example when the levels for
+				retrospective and current holdings differ.</td></tr>
+			<tr>		<td></td>		<td>u = Unknown</td></tr>
+			<tr>		<td></td>		<td>z = Other level</td></tr>
+			<tr>		<td>18</td>		<td>Item information in record</td></tr>
+			<tr>		<td></td>		<td>One character code that indicates whether item information is in the record, contained in one
+				or more occurrences of fields <field>530</field>-<field>532</field></td></tr>
+			<tr>		<td></td>		<td>0 = No item information</td></tr>
+			<tr>		<td></td>		<td>1 = Item information</td></tr>
+			<tr>		<td></td>		<td>x = Not applicable</td></tr>
+			<tr>		<td>19</td>		<td>Undefined</td></tr>
+			<tr>		<td>20-23</td>		<td>Directory map</td></tr>
+			<tr>		<td>20</td>		<td>Length of “Length of field”</td></tr>
+			<tr>		<td></td>		<td>One decimal digit giving the number of characters in the “Length of field” part of each
+				directory entry. The value in UNIMARC holdings format is 4.</td></tr>
+			<tr>		<td>21</td>		<td>Length of “Starting character position“</td></tr>
+			<tr>		<td></td>		<td>One decimal digit giving the number of characters in the “Starting character position“ of each
+				directory entry. The value in UNIMARC hold ings format is 5.</td></tr>
+			<tr>		<td>22</td>		<td>Length of implementation-defined portion</td></tr>
+			<tr>		<td></td>		<td>A decimal digit giving the number of characters in the implementation-defined portion of
+				each directory entry. As a UNIMARC directory entry does not contain such a portion, the
+				value in UNIMARC is 0.</td></tr>
+			<tr>		<td>23</td>		<td>Undefined (blank)</td></tr>
+			<tr>		<td></td>		<td></td></tr>
+			<tr>		<td></td>		<td></td></tr>
+			<tr>		<td></td>		<td></td></tr>
+		</table>]]></NOTES>
+</FIELD>
+
+<block tag="0" name="Блок ідентифікації">
+	<ALTERNATIVE language="eng" name="Identification block"/>
+	<DESCRIPTION><![CDATA[This block contains those numbers that identify the item or the copy recorded in it.
+		<table style="font-size:small; color:rgb(0,0,102);">
+			<tr>		<td><field>001</field></td>		<td>Holdings Record Identifier</td></tr>
+			<tr>		<td><field>004</field></td>		<td>Related Bibliographic Record Identifier</td></tr>
+			<tr>		<td><field>005</field></td>		<td>Version Identifier</td></tr>
+			<tr>		<td><field>035</field></td>		<td>Other Systems Control Number</td></tr>
+			<tr>		<td><field>070</field></td>		<td>Inventory Number</td></tr>
+		</table>
+		<b>Occurrence</b><br />
+		Fields <field>001</field> and <field>004</field> are mandatory in every record. Other fields are entered 
+		when data is available.]]></DESCRIPTION>
+</block>
+
+<FIELD tag="001" name="Holdings record identifier" mandatory="y" repeatable="n">
+	<ALTERNATIVE language="eng" name="Holdings record identifier"/>
+	<MANDATORY_TEXT><![CDATA[Обов’язкове]]></MANDATORY_TEXT>
+	<REPEATABLE_TEXT><![CDATA[Не повторюється]]></REPEATABLE_TEXT>
+	<DESCRIPTION><![CDATA[This field contains the record control number assigned by the agency preparing the record.]]></DESCRIPTION>
+	<NOTES><![CDATA[There are no restrictions on the form of the record identifier.]]></NOTES>
+	<NOTES_SUBFIELD>In conformance with ISO 2709 this field does not contain subfields.</NOTES_SUBFIELD>
+	<IND1>
+		<DESCRIPTION><![CDATA[In conformance with ISO 2709 this field does not have indicators.]]></DESCRIPTION>
+	</IND1>
+	<RELATED tag="" name="">
+		<DESCRIPTION><![CDATA[An agency may be using other separately identified numbers such as ISBN or National Bibliography
+			Number as a Record Identifier.]]></DESCRIPTION>
+	</RELATED>
+	<EXAMPLES>
+		<EX n="1" name="EX 1"><![CDATA[001 163279<br />
+			001 02-8576]]></EX>
+	</EXAMPLES>
+</FIELD>
+
+<block tag="9" name="Блок національного використання">
+	<ALTERNATIVE language="eng" name="National use block"/>
+	<DESCRIPTION><![CDATA[]]></DESCRIPTION>
+</block>
+
+</FORMAT>
+

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORMAT name="UKRMARC" domain="Classification" version="0.01 30.10.2012">
+
+<about><![CDATA[
+	Формат УКРМАРК для класифікаційних записів покликаний бути варіантом „UNIMARC/Classification“, 
+	адатованим для потреб бібліотек України.<br />
+	При складанні БД „UKRMARC Classification“ використані наступні джерела:
+	<ul>
+		<li><a href="http://www.nbuv.gov.ua/library/ukrmarc.html">УКРМАРК — Національний формат представлення бібліографічних даних (проект 2002-2004)</a></li>
+		<li><a href="http://www.rusmarc.ru/commun/index.html">Формат RUSMARC представления классификационных данных</a></li>
+		<li><a href="http://www.bnf.fr/fr/professionnels/f_um/s.format_classifications.html?first_Art=non">Format pour les classifications</a></li>
+		<li><a href="http://archive.ifla.org/VI/3/p1996-1/preface.htm">UNIMARC classification format [invitation for world wide review, 2000]</a></li>
+		
+		<li><a href="http://archive.ifla.org/VI/3/p1996-1/concise.htm">Concise UNIMARC Classification format (2000/10/31)</a></li>
+		<li><a href="http://uk.wikipedia.org/wiki/UNIMARC">UNIMARC (стаття на Вікіпедії)</a></li>
+	</ul>]]>
+</about>
+
+<changelog>
+	<item version="0.01" date="30.10.2012">Початок роботи над БД „UKRMARC Classification“.</item>
+</changelog>
+
+<FIELD tag="LEADER" name="Record label" mandatory="y" repeatable="n">
+	<ALTERNATIVE language="eng" name="Record label"/>
+	<MANDATORY_TEXT><![CDATA[The record label occurs at the beginning of every record. Обов’язкове]]></MANDATORY_TEXT>
+	<REPEATABLE_TEXT><![CDATA[Не повторюється]]></REPEATABLE_TEXT>
+	<DESCRIPTION><![CDATA[This area of the record contains general information which may be needed in processing the record, 
+		constituted according to the provisions of ISO 2709.]]></DESCRIPTION>
+	<NOTES><![CDATA[<b>Tag, Indicators, and Subfields</b><br />
+		The record label has no tag, indicators, or subfield identifiers.
+		<b>Fixed Length Data Elements</b>
+		These data elements are identified by character position within the label. The label as a whole is always 24 characters in length.
+		Conventionally the character positions are numbered 0 to 23.
+<table style="font-size:small; color:rgb(0,0,102);">
+<tr>
+	<td><center>Name of Data Element</center></td>
+	<td><center>Number of Characters</center></td>
+	<td><center>Character Positions</center></td>
+</tr>
+<tr>
+	<td>Record length</td>
+	<td><center>5</center></td>
+	<td><center>0-4</center></td>
+</tr>
+<tr>
+	<td>Record status</td>
+	<td><center>1</center></td>
+	<td><center>5</center></td>
+</tr>
+<tr>
+	<td>Type of record</td>
+	<td><center>1</center></td>
+	<td><center>6</center></td>
+</tr>
+<tr>
+	<td>Undefined</td>
+	<td><center>3</center></td>
+	<td><center>7-9</center></td>
+</tr>
+<tr>
+	<td>Indicator length</td>
+	<td><center>1</center></td>
+	<td><center>10</center></td>
+</tr>
+<tr>
+	<td>Subfield identifier length</td>
+	<td><center>1</center></td>
+	<td><center>11</center></td>
+</tr>
+<tr>
+	<td>Base address of data</td>
+	<td><center>5</center></td>
+	<td><center>12-16</center></td>
+</tr>
+<tr>
+	<td>Encoding level</td>
+	<td><center>1</center></td>
+	<td><center>17</center></td>
+</tr>
+<tr>
+	<td>Record Update in Process</td>
+	<td><center>1</center></td>
+	<td><center>18</center></td>
+</tr>
+<tr>
+	<td>Undefined</td>
+	<td><center>1</center></td>
+	<td><center>19</center></td>
+</tr>
+<tr>
+	<td>Directory map</td>
+	<td><center>4</center></td>
+	<td><center>20-23</center></td>
+</tr>
+</table>
+		<b>Notes on Field Contents</b><br />
+		The Record Label (also known as leader) is found at the beginning of each UNIMARC record and contains data for processing the record. Character positions 10, 11, 20-23 contain specific fixed values which may be generated programmatically by the computer. Character positions 0-4 and 12-16 contain numerical data indicating the number of characters in certain areas of the record; these can be calculated by the computer when the record is formatted. Values for the character positions 5, 6, 17 may be translated from data in the source record by conversion program or, where UNIMARC is being used as the source format, assigned manually.
+<p>0-4 Record length
+Five decimal digits, right justified, with zero fill where necessary, representing the number of characters in the entire record, including the label itself, the directory, and the variable fields. This data element is normally calculated automatically when the total record is assembled for exchange.</p>
+<p>5 Record Status<br>
+A single digit, denoting the processing status of the record.</p>
+<ul>a = record with an increase in encoding level<br>
+c = corrected or revised record<br>
+d = deleted record<br>
+n = new record</ul>
+<p>06 Type of Record</p>
+<ul>w = classification data</ul>
+<p>07-09 Undefined character positions</p>
+<p>10 Indicator length</p>
+<ul>2</ul>
+<p>11 Subfield identifier length</p>
+<ul>2</ul>
+<p>12-16 Base address of data</p>
+<p>17 Encoding level</p
+><ul># = full record<br>
+3 = partial record</ul>
+<p> 18 Record Update in Process</p>
+<ul>a Record can be used<br>
+b Record is Being Updated</ul>
+<p>19 Undefined</p>
+<p>20-23 Directory map</p>]]></NOTES>
+	<NOTES_SUBFIELD>Це поле не містить підполів.</NOTES_SUBFIELD>
+	<IND1>
+		<DESCRIPTION><![CDATA[Це поле не має індикаторів.]]></DESCRIPTION>
+	</IND1>
+</FIELD>
+
+<block tag="0" name="Блок ідентифікації">
+	<ALTERNATIVE language="eng" name="Identification block"/>
+	<DESCRIPTION><![CDATA[]]></DESCRIPTION>
+</block>
+
+<FIELD tag="001" name="Ідентифікатор запису" mandatory="y" repeatable="n">
+	<ALTERNATIVE language="eng" name="Record Identifier"/>
+	<MANDATORY_TEXT><![CDATA[Обов’язкове]]></MANDATORY_TEXT>
+	<REPEATABLE_TEXT><![CDATA[Не повторюється]]></REPEATABLE_TEXT>
+	<DESCRIPTION><![CDATA[This field contains characters uniquely associated with the record, i.e. the control number for the record 
+		of the agency preparing the record.]]></DESCRIPTION>
+	<NOTES><![CDATA[There are no restrictions on the form of the record identifier.<br />
+		When the record identifier consists of or incorporates any form of an International Standard Number, other identifiable number 
+		such as a national number, or other data such as country of publication, this information is nevertheless to be entered
+		in the field specified for that data in addition to recording it as the record identifier in this field.]]></NOTES>
+	<NOTES_RELATED><![CDATA[Related Fields An agency may be using other separately identified numbers such as ISBN 
+		or National Bibliography Number as a Record Identifier. See Notes on Field Contents above for treatment in these cases.]]></NOTES_RELATED>
+	<RELATED tag="003" name="INSTITUTION OF RECORD IDENTIFIER">
+		<DESCRIPTION><![CDATA[This field contains a code identifying the source of the record identifier.]]></DESCRIPTION>
+	</RELATED>
+	<RELATED tag="035" name="SYSTEM CONTROL NUMBER">
+		<DESCRIPTION><![CDATA[When an agency adds another agency's records to its database, the earlier record identifier is placed 
+			in this field.]]></DESCRIPTION>
+	</RELATED>
+	<NOTES_IND><![CDATA[In conformance with ISO 2709 this field does not have indicators. Це поле не має індикаторів.]]></NOTES_IND>
+	<NOTES_SUBFIELD><![CDATA[In conformance with ISO 2709 this field does not contain subfields. Це поле не містить підполів.]]></NOTES_SUBFIELD>
+	<EXAMPLES>
+		<EX n="1" name="EX 1"><![CDATA[001 7661149]]></EX>
+	</EXAMPLES>
+</FIELD>
+
+<block tag="9" name="Блок національного використання">
+	<ALTERNATIVE language="eng" name="National use block"/>
+	<DESCRIPTION><![CDATA[<b>Definition and Scope of Fields</b><br />
+		This block is reserved for national use by agencies where UNIMARC is the basis of the domestic format. It is recommended that fields 
+		in this block be excluded from international exchange media. In cases of difficulty, it would be a matter for international agreement 
+		as to whether particular types of data should be held in a local field. Agencies using this block may, if they wish, come to an agreement
+		over common use of fields; but this is optional.]]></DESCRIPTION>
+	<NOTES><![CDATA[<b>Notes on Field Contents</b><br />
+		These fields may contain any information which is of local, as opposed to international, importance.<br />
+		<b>Related Fields, Indicators, and Subfields</b><br />
+		All -9- and --9 fields throughout the format are reserved for national and local use; their definitions and indicator and subfield values
+		remain undefined by the Permanent UNIMARC Committee. This is also true of indicator value 9 and subfield $9.]]></NOTES>
+</block>
+
+</FORMAT>
+

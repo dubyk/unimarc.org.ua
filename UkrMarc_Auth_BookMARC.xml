@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORMAT name="UKRMARC" domain="Authorities" version="0.01 30.10.2012">
+
+<about><![CDATA[
+	Формат УКРМАРК для авторитетних/нормативних записів покликаний бути варіантом „UNIMARC/Authorities“, 
+	адатованим для потреб бібліотек України.<br />
+	При складанні БД „UKRMARC Authorities“ використані наступні джерела:
+	<ul>
+		<li><a href="http://www.nbuv.gov.ua/library/ukrmarc.html">УКРМАРК — Національний формат представлення бібліографічних даних
+			(проект 2002-2004)</a></li>
+		<li><a href="http://www.ifla.org/files/uca/UNIMARC%20concise%20authorities%20format%20(2009).pdf">UNIMARC Concise Authorities Format
+			(2009)</a></li>
+		<li><a href="http://www.ifla.org/VI/8/projects/UNIMARC-AuthoritiesFormat.pdf">UNIMARC Authorities (2001)</a></li>
+		<li><a href="http://www.rusmarc.ru/auth/index.html">Формат RUSMARC/Authorities представления авторитетных/нормативных данных</a></li>
+		<li><a href="http://www.bnf.fr/fr/professionnels/f_um/s.format_unimarc_notices_autorite.html?first_Art=non">Format des notices
+			d'autorité</a></li>
+		<li><a href="http://www.nlb.by/portal/page/portal/index/content?lang=ru&amp;classId=148FA2C2FEB14084864BD443B6B0A6A6">Белорусский
+			коммуникативный формат представления авторитетных/нормативных записей в машиночитаемой форме (BELMARC/Authorities)</a></li>
+		<li><a href="http://uk.wikipedia.org/wiki/UNIMARC">UNIMARC (стаття на Вікіпедії)</a></li>
+	</ul>]]>
+</about>
+
+<changelog>
+	<item version="0.01" date="30.10.2012">Початок роботи над БД „UKRMARC Authorities“.</item>
+</changelog>
+
+<FIELD tag="LEADER" name="Маркер" mandatory="y" repeatable="n" length="24">
+	<ALTERNATIVE language="eng" name="Record label"/>
+	<DESCRIPTION><![CDATA[Маркер складається з елементів даних, які містять цифри або кодовані значення, що визначають параметри 
+		опрацювання запису. Маркер запису формується у відповідності з положеннями 
+		стандарту <a href="http://en.wikipedia.org/wiki/ISO_2709">ISO-2709</a>.]]></DESCRIPTION>
+	<MANDATORY_TEXT><![CDATA[Обов’язкове. Розташовується на початку кожного запису.]]></MANDATORY_TEXT>
+	<REPEATABLE_TEXT><![CDATA[Не повторюється]]></REPEATABLE_TEXT>
+	<NOTES><![CDATA[Маркер запису не має мітки, індикаторів та ідентифікаторів підполів.<br />
+	<br />
+		<b>Елементи даних фіксованої довжини</b><br />
+		<p align="justify" style="text-indent:1em;">Маркер запису являє собою набір елементів даних фіксованої довжини, 
+		які ідентифікуються позицією всередині маркера. 
+		Він має фіксовану довжину у <b>24</b> символи. Позиції символів нумеруються від <b>0</b> до <b>23</b>.</p>
+		Таблиця елементів даних фіксованої довжини:<br />
+		<br />
+		<table style="font-size:small; color:rgb(0,0,102);">
+			<tr><td></td>		<td><i>Найменування елемента даних</i></td>
+				 <td><i>Кількість символів</i></td>		<td><i>Позиції символів</i></td></tr>
+			<tr><td>(1)</td>		<td>Довжина запису</td>
+				 <td>5</td>		<td>0-4</td></tr>
+			<tr><td>(2)</td>		<td>Статус запису</td>
+				 <td>1</td>		<td>5</td></tr>
+			<tr><td>(3)</td>		<td>Коди застосування</td>
+				 <td>4</td>		<td>6-9</td></tr>
+			<tr><td>(4)</td>		<td>Довжина індикатора</td>
+				 <td>1</td>		<td>10</td></tr>
+			<tr><td>(5)</td>		<td>Довжина ідентифікатора підполя</td>
+				 <td>1</td>		<td>11</td></tr>
+			<tr><td>(6)</td>		<td>Базова адреса даних</td>
+				 <td>5</td>		<td>12-16</td></tr>
+			<tr><td>(7)</td>		<td>Додаткове визначення запису</td>
+				 <td>3</td>		<td>17-19</td></tr>
+			<tr><td>(8)</td>		<td>План довідника</td>
+				 <td>4</td>		<td>20-23</td></tr>
+		</table>
+		<br />
+
+(1) Довжина запису (позиції символів 0-4):
+      
+<p align="justify" style="text-indent:1em; margin-left:2em;">Довжина запису – кількість символів в запису, включаючи маркер запису,     довідник, поля змінної довжини, роздільник запису. Виражається десятковим числом з п’яти цифр, які при необхідності  вирівнюються вправо початковими нулями (не 546, а 00546). Визначається автоматично, коли запис цілком сформовано для обміну.</p>
+
+(2) Статус запису (позиція символу 5):
+ 
+<p align="justify" style="text-indent:1em; margin-left:2em;">Один символ, який визначає статус обробки запису.
+      Використовуються наступні коди, що визначають статус обробки запису.</p>
+
+<p align="justify" style="margin-left:2em;"><b>n</b> —­ новий запис</p>
+
+<p align="justify" style="text-indent:1em; margin-left:2em;">Запис, підготовлений для використання в бібліографуючій установі-створювачі запису або для обміну.</p>
+
+<p align="justify" style="margin-left:2em;"><b>d</b> — ­  вилучений запис</p>
+      
+<p align="justify" style="text-indent:1em; margin-left:2em;">Запис, який бере участь в обміні для зазначення, що інший запис (авторитетний/нормативний, посилальній або довідковий запис), котрий має відповідний контрольний номер, не дійсний. Для авторитетного/ нормативного запису це значить наступне: запис вилучений із файлу у зв’язку з тим, що заголовок записаний у полі блока <block>2--</block> , вирішено у подальшому не використовувати – замість нього вирішено використовувати інший заголовок (заголовки), новий або вже існуючий в системі, для котрого існував або створюється окремий авторитетний/нормативний запис. Заголовок вилученого запису може включатися в поля блоку <block>4--</block>  до запису (записи) для заголовка (заголовків), котрі вирішено використовувати замість вилученого. Запис може містити тільки маркер, довідник і поле 001 (контрольний номер запису) або може містити всі поля запису. У всякому випадку поле 835 “Інформація про вилучений заголовок” може використовуватися для пояснення причини вилучення запису.</p>
+
+<p align="justify" style="margin-left:2em;"><b>c</b> — ­ відкоректований запис</p>
+
+<p align="justify" style="text-indent:1em; margin-left:2em;">Запис, який бере участь в обміні для зазначення, що даний запис має замінити інший, який має відповідний контрольний номер. Запис вводить додатково та (або) заміняє, та (або) вилучає деякі елементи даних у раніше введеному записі. При цьому маються на увазі будь які виправлення — будь-яка редакція будь-якого поля запису (відповідно змінюється ідентифікатор версії в полі 005). Виправлення можуть бути пов’язані або не пов’язані із зміною рівня кодування з часткового на повний запис.</p>
+
+(3) Коди застосування (позиції символів 6-9):
+
+<p align="justify" style="text-indent:1em; margin-left:2em;">Коди в позиціях 6-9 визначаються не стандартом ISO 2709, а особливостями   конкретного застосування формату.</p>
+
+<p align="justify" style="margin-left:2em;">(а) Тип запису (позиція символу 6)</p>
+	 
+<p align="justify" style="text-indent:1em; margin-left:2em;">Використовуються наступні коди, що визначають тип запису:<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>x</b> — авторитетний/нормативний запис<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>y</b> — посилальний запис<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>z</b> — довідковий запис</p>
+	 
+<p align="justify" style="margin-left:2em;">(б) Не визначено (позиції символів 7-8). Два пробіли (<b>##</b>).</p>
+
+<p align="justify" style="margin-left:2em;">(в) 	Тип об’єкта опису (позиція символу 9)</p>
+
+<p align="justify" style="text-indent:1em; margin-left:2em;">Код вказує тип об’єкта опису, ідентифікованого у полі 2--.<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>a</b> — ім’я особи<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>b</b> — найменування організації<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>c</b> — географічна назва<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>d</b> — торгова марка<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>e</b> — родове ім’я<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>f</b> — заголовок<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>g</b> — типовий заголовок<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>h</b> — ім’я/заголовок<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>i</b> — ім’я / типовий заголовок<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>j</b> — найменування теми<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>k</b> — місце та дата публікації, походження, виконання<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>l</b> — форма, жанр, фізичні характеристики документа</p>
+
+(4) Довжина індикатора (позиція символу 10):
+
+<p align="justify" style="text-indent:1em; margin-left:2em;">Одна десяткова цифра, що задає довжину індикатора. Є величиною сталою    для даного формата має значення <b>2</b>.</p>
+
+(5) Довжина індентифікатора підполя (позиція символа 11):
+
+<p align="justify" style="text-indent:1em; margin-left:2em;">Одна десяткова цифра, що задає довжину ідентифікатора підполя, прикладом, „$а“. Є величиною сталою    для даного формату має значення <b>2</b>.</p>
+
+(6) Базова адреса даних (позиції символів 12-16):
+	   
+<p align="justify" style="text-indent:1em; margin-left:2em;">П’ять десяткових цифр, які вирівнюються вправо початковими нулями (не 546, а 00546) та вказують початкову символьну позицію першого поля даних відносно початку запису. Це число включає загальну кількість символів в маркері та довіднику запису, включаючи роздільник поля в кінці довідника. В довіднику початкова позиція символів для кожного поля задається відносно першого символу першого поля даних, котре є полем 001, а не від початку запису. Генерується системою.</p>
+
+(7) Додаткове визначення запису (позиції символів 17-19):
+	   
+<p align="justify" style="text-indent:1em; margin-left:2em;">Три позиції символів, які містять коди для надання додаткових відомостей,    необхідних при опрацюванні запису:</p>
+
+<p align="justify" style="margin-left:2em;">(а) Рівень кодування (позиція символу 17)</p>
+
+<p align="justify" style="text-indent:1em; margin-left:2em;">Односимвольний код, що вказує ступінь повноти машиночитаного запису.</p>
+
+<p align="justify" style="margin-left:3em;"><b>#</b> (пробіл) = повний запис</p>
+
+<p align="justify" style="text-indent:1em; margin-left:3em;">Запис містить всі необхідні дані, включаючи посилання, правила їх формування та примітки (якщо правила формування посилань та приміток необхідні). Запис підготовлений для використання в бібліографуючій установі або для обміну. В запису заповнені всі поля і підполя зі статусом обов’язковий та умовнообов’язковий.</p>
+
+<p align="justify" style="margin-left:3em;"><b>3</b> = частковий</p>
+
+<p align="justify" style="text-indent:1em; margin-left:3em;">Запис містить не всі дані, оскільки не виконана необхідна довідкова робота  і після її виконання, у випадку необхідності, можуть бути доповнені посилання „див.” і  “див. також”  та довідкові примітки.</p>
+
+<p align="justify" style="margin-left:3em;">Примітки:</p>
+
+<p align="justify" style="text-indent:-1em; margin-left:4em;">(1) Рівень кодування не пов’язаний з кодом статусу заголовка (100/8). І повний, і частковий запис можу містити в полі <block number="2">блоку 2--</block> як нормативний заголовок (код статусу <b>а</b> – нормативний), так і заголовок попередній (код статусу <b>с</b> – попередній), тобто заголовок, що не прийнятий як нормативний і може бути переглянутий. Розбіжність між повним та частковим записами пов’язана з тим, наскільки повно представлена необхідна інформація, пов’язана із заголовком.</p>
+<p align="justify" style="text-indent:-1em; margin-left:4em;">(2)  Після того, як рівень кодування набуває значення <b>#</b> (пробіл – повний запис), дати усіх наступних модифікацій (змін) запису фіксуються в поля 801 зі значенням другого індикатора <b>2</b> (організація модифікуюча).</p>
+
+<p align="justify" style="margin-left:2em;">(б) Не визначено (позиції символів 18-19). Два пробіли (<b>##</b>).</p>
+
+(8) План довідника (позиції символів 20-23).
+
+<p align="justify" style="margin-left:2em;">(а) Довжина компонента „Довжина поля” кожної статті довідника (позиція      символу 20).	</p>
+
+<p align="justify" style="text-indent:1em; margin-left:2em;">Одна десяткова цифра. Значення = <b>4</b>.</p>
+
+<p align="justify" style="margin-left:2em;">(б) Довжина компонента „позиція початкового символу” кожної статті довідника (позиція символу 20).<p>
+
+<p align="justify" style="text-indent:1em; margin-left:2em;">Одна десяткова цифра. Значення = <b>5</b>.</p>
+
+<p align="justify" style="margin-left:2em;">(в) Не визначено (позиції символів 22-23). Два пробіли (<b>##</b>).</p>
+
+Зведено:
+
+		<table style="font-size:small; color:rgb(0,0,102);">
+			<tr><td><b>0-4</b></td><td><b>Довжина запису</b></td></tr> 
+			<tr><td><b>5</b></td><td><b>Статус запису</b></td></tr> 
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = виправлений або переглянутий запис</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d = вилучений запис</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = новий запис</td></tr>
+			<tr><td><b>6-9</b></td><td><b>Коди застосування</b></td></tr> 
+			<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6</b></td><td><b>Тип запису</b></td></tr> 
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = авторитетний/нормативний запис</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = посилальний запис</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z = довідковий запис</td></tr>
+			<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7-8</b></td><td><b>Не визначено</b></td></tr> 
+			<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9</b></td><td><b>Тип об’єкту опису</b></td></tr> 
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = ім’я особи</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = найменування організації</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = географічна назва</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d = торгова марка</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e = родове ім’я</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f = заголовок</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g = типовий заголовок</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h = ім’я/заголовок</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = ім’я / типовий заголовок</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = найменування теми</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = місце та дата публікації, походження, виконання</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l = форма, жанр, фізичні характеристики документа</td></tr>
+			<tr><td><b>10</b></td><td><b>Довжина індикатора (завжди <b>2</b>)</b></td></tr> 
+			<tr><td><b>11</b></td><td><b>Довжина індентифікатора підполя (завжди <b>2</b>)</b></td></tr> 
+			<tr><td><b>12-16</b></td><td><b>Базова адреса даних</b></td></tr> 
+			<tr><td><b>17-19</b></td><td><b>Додаткове визначення запису</b></td></tr> 
+			<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;17</b></td><td><b>Рівень кодування</b></td></tr> 
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# = повний (запис)</td></tr>
+			<tr><td><b></b></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 = частковий</td></tr>
+			<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18-19</b></td><td><b>Не визначено</b></td></tr> 
+			<tr><td><b>20-23</b></td><td><b>План довідника</b></td></tr> 
+			<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20</b></td><td><b>Довжина компонента „Довжина поля” кожної статті довідника (завжди <b>4</b>)</b></td></tr> 
+			<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21</b></td><td><b>Довжина компонента „позиція початкового символу” кожної статті довідника (завжди <b>5</b>)</b></td></tr> 
+			<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;22-23</b></td><td><b>Не визначено</b></td></tr>
+		</table>
+	]]></NOTES>
+	<NOTES_RELATED><![CDATA[Елементи даних, що входять до МАРКЕРА ЗАПИСУ, більше ніде в форматі не використовуються. 
+		Хоча деякі із значень кодів застосування (наприклад, „тип запису“ та „тип об’єкта опису“) можуть частково збігатися 
+		з іншими кодованими даними, в дійсності, коди у МАРКЕРІ ЗАПИСУ відносяться до характеристик запису, 
+		а не до характеристик самого об’єкта опису.]]></NOTES_RELATED>
+</FIELD>
+
+<block tag="0" name="Блок ідентифікації">
+	<ALTERNATIVE language="eng" name="Identification block"/>
+</block>
+
+<FIELD tag="001" name="Ідентифікатор запису" mandatory="y" repeatable="n">
+	<ALTERNATIVE language="eng" name="Record Identifier"/>
+	<MANDATORY_TEXT><![CDATA[Обов’язкове]]></MANDATORY_TEXT>
+	<REPEATABLE_TEXT><![CDATA[Не повторюється]]></REPEATABLE_TEXT>
+	<NOTES_SUBFIELD>Це поле не містить підполів.</NOTES_SUBFIELD>
+	<NOTES_IND>Це поле не має індикаторів.</NOTES_IND>
+</FIELD>
+
+<FIELD tag="035" name="Other System Control Numbers" mandatory="n" repeatable="y">
+	<ALTERNATIVE language="eng" name="FieldName"/>
+	<MANDATORY_TEXT><![CDATA[Факультативне]]></MANDATORY_TEXT>
+	<REPEATABLE_TEXT><![CDATA[Повторюється]]></REPEATABLE_TEXT>
+	<DESCRIPTION><![CDATA[This field contains the control number of records obtained from other sources.]]></DESCRIPTION>
+	<IND1>
+		<OPTION value=" " name="пробіл (не визначений)"/>
+	</IND1>
+	<IND2>
+		<OPTION value=" " name="пробіл (не визначений)"/>
+	</IND2>
+	<RELATED tag="001" name="RECORD IDENTIFIER">
+		<DESCRIPTION><![CDATA[The control number used as the unique identifier by the agency preparing the record.]]></DESCRIPTION>
+	</RELATED>
+	<NOTES_SUBFIELD><![CDATA[The control number is stored in the form contributed.]]></NOTES_SUBFIELD>
+	<SUBFIELD tag="^a" name="System control number" repeatable="n" mandatory="n">
+		<ALTERNATIVE language="eng" name="System control number"/>
+		<MANDATORY_TEXT><![CDATA[Факультативне]]></MANDATORY_TEXT>
+		<REPEATABLE_TEXT><![CDATA[Не повторюється]]></REPEATABLE_TEXT>
+		<DESCRIPTION><![CDATA[A code for the organisation in parentheses followed by the system control number for the record in that
+			organisation's database. Since there are no internationally accepted codes, the codes from the 
+			<a href="http://www.loc.gov/marc/organizations/">MARC Code List for Organisations</a> are recommended. 
+			Otherwise the full name of the agency or a national code may be used.]]></DESCRIPTION>
+	</SUBFIELD>
+	<SUBFIELD tag="^z" name="Cancelled or invalid control number" repeatable="y" mandatory="n">
+		<ALTERNATIVE language="eng" name="Cancelled or invalid control number"/>
+		<MANDATORY_TEXT><![CDATA[Факультативне]]></MANDATORY_TEXT>
+		<REPEATABLE_TEXT><![CDATA[Повторюється]]></REPEATABLE_TEXT>
+	</SUBFIELD>
+	<EXAMPLES>
+		<EX n="1" name="EX 1"><![CDATA[035 ##$a(CaBVaU)2835210335</br>
+			The control number was assigned by the University of British Columbia.]]></EX>
+		<EX n="2" name="EX 2"><![CDATA[035 ##$a(OCoLC)1553114$z(OCoLC)153114<br />
+			The control number was assigned by OCLC. The original number assigned was invalid and has been superseded.]]></EX>
+	</EXAMPLES>
+</FIELD>
+
+<block tag="9" name="Блок національного використання">
+	<ALTERNATIVE language="eng" name="National use block"/>
+	<DESCRIPTION><![CDATA[All -9- and --9 fields throughout the format are reserved for national and local use; 
+		their definitions and indicator and subfield values remain undefined 
+		by the <a href="http://www.ifla.org/unimarc/puc">Permanent UNIMARC Committee</a>.<br />
+		This is also true of indicator value 9 and subfield $9.]]></DESCRIPTION>
+</block>
+
+</FORMAT>
+
